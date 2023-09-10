@@ -15,6 +15,7 @@ class _BleScannerHelper {
   _BleScannerHelper(this.bleEx, this.flutterReactiveBle);
 
   StreamSubscription<DiscoveredDevice>? _subscription;
+  List<Uuid>? withServices;
 
   bool startScan = false;
   bool scanning = false;
@@ -27,10 +28,12 @@ class _BleScannerHelper {
     if (!startScan) return; //有可能已被停止了
     if (scanning) return; //已经在扫描中了
     scanning = true;
-    _subscription = flutterReactiveBle.scanForDevices(
-      withServices: [],
-      scanMode: ScanMode.lowLatency,
-    ).listen(
+    _subscription = flutterReactiveBle
+        .scanForDevices(
+      withServices: withServices ?? [],
+      scanMode: ScanMode.balanced,
+    )
+        .listen(
       (device) {
         List<ScanningListener> tempCallbacks = [];
         for (var func in deviceUpdateCallbacks) {

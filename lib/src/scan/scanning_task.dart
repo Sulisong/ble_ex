@@ -19,7 +19,10 @@ class BleScanningTask {
   }
 
   /// 开始扫描设备
-  void scanDevices({List<DevicesFilter>? filters}) {
+  void scanDevices({
+    List<DevicesFilter>? filters,
+    List<Uuid>? withServices,
+  }) {
     if (_disposed) {
       throw Exception("Scanning task can not start after disposed");
     }
@@ -29,6 +32,7 @@ class BleScanningTask {
         _filters.add(filters[i]);
       }
     }
+    _scannerHelper!.withServices = withServices;
     _scannerHelper!.addDeviceUpdateListener(_deviceUpdateHandler);
   }
 
