@@ -31,7 +31,7 @@ class _BleScannerHelper {
     _subscription = flutterReactiveBle
         .scanForDevices(
       withServices: withServices ?? [],
-      scanMode: ScanMode.balanced,
+      scanMode: ScanMode.lowPower,
     )
         .listen(
       (device) {
