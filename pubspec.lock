@@ -73,10 +73,11 @@ packages:
   flutter_reactive_ble:
     dependency: "direct main"
     description:
-      name: flutter_reactive_ble
-      sha256: "7a0d245412dc8e1b72ce2adc423808583b42ce824b1be74001ff22c8bb5ada48"
-      url: "https://pub.flutter-io.cn"
-    source: hosted
+      path: "packages/flutter_reactive_ble"
+      ref: HEAD
+      resolved-ref: "7c5c0a960b59b75e9f270a1cf492b275bc6aec8b"
+      url: "https://github.com/Sulisong/flutter_reactive_ble.git"
+    source: git
     version: "5.2.0"
   flutter_test:
     dependency: "direct dev"
