@@ -31,12 +31,12 @@ class _BlePeripheralCore {
   /// 是否在连接中
   bool get connecting => _connecting;
 
-  void connect({int timeoutMilliseconds = 2000}) {
+  void connect(int timeoutMilliseconds, {bool retry = true}) {
     if (connecting) {
       bleLog(_tag, '[Warning] Can not run connect again');
       return;
     }
-    _doConnect(timeoutMilliseconds, 0);
+    _doConnect(timeoutMilliseconds, retry ? 0 : 3);
   }
 
   Future<void> _doConnect(int timeoutMilliseconds, int retryTimes) async {

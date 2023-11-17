@@ -223,7 +223,12 @@ class BlePeripheral extends Object {
 
   /// 连接
   void connect({int timeoutMilliseconds = 2000}) {
-    _device.connect(timeoutMilliseconds: timeoutMilliseconds);
+    _device.connect(timeoutMilliseconds);
+  }
+
+  /// 连接不重试
+  void connectNoRetry({int timeoutMilliseconds = 3600}) {
+    _device.connect(timeoutMilliseconds, retry: false);
   }
 
   /// 连接
